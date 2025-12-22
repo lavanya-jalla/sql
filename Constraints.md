@@ -93,3 +93,56 @@ CREATE TABLE persons (
     age int,
     PRIMARY KEY (ID)
 );
+
+# default
+
+ alter table person modify section char DEFAULT 'A';
+
+CREATE TABLE persons (
+    id int NOT NULL AUTO_INCREMENT,
+    lname varchar(255) NOT NULL,
+    fname varchar(255),
+    age int,
+    PRIMARY KEY (ID),
+    section char DEFAULT 'A'
+);
+
+UPDATE person
+    -> SET section = 'A'
+    -> WHERE section IS NULL;
+
+alter table person add country varchar(20) DEFAULT 'INDIA';
+
+# check
+
+
+CREATE TABLE persons (
+    id int NOT NULL AUTO_INCREMENT,
+    lname varchar(255) NOT NULL,
+    fname varchar(255),
+    age int CHECK(age>=18),
+    PRIMARY KEY (ID),
+    section char DEFAULT 'A'
+);
+alter table person add check(age>18);
+
+# foreign key
+
+ CREATE TABLE orders (
+    ->   ord_id INT NOT NULL,
+    ->   ord_num INT NOT NULL,
+    ->   id INT,
+    ->   PRIMARY KEY (ord_id),
+    ->   CONSTRAINT FK_PersonOrder
+    ->     FOREIGN KEY (id) REFERENCES person(id)
+    -> );
+
+ +---------+---------+------+-----+---------+----------------+
+| Field   | Type    | Null | Key | Default | Extra          |
++---------+---------+------+-----+---------+----------------+
+| ord_id  | int(11) | NO   | PRI | NULL    | auto_increment |
+| ord_num | int(11) | NO   |     | NULL    |                |
+| id      | int(11) | YES  | MUL | NULL    |                |
++---------+---------+------+-----+---------+----------------+
+
+alter table oders drop FORIEGN_KEY fk_PersonOrder;
