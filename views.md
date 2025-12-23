@@ -63,3 +63,23 @@ MariaDB [country]> select * from countries_view;
  select * from countries_view where continent_code='AS';
 
   select count(*) from countries_view where continent_code='AS';
+
+ create or replace view Asian_countires as select * from countries_view where continent_code='AS';
+ MariaDB [country]> show full tables;
++--------------------+------------+
+| Tables_in_country  | Table_type |
++--------------------+------------+
+| american_countires | VIEW       |
+| apps_countries     | BASE TABLE |
+| asian_countires    | VIEW       |
+| continents         | BASE TABLE |
+| countries          | BASE TABLE |
+| countries_view     | VIEW       |
+| country_view       | VIEW       |
++--------------------+------------+
+7 rows in set (0.010 sec)
+
+
+  create or replace view American_countires as select * from countries_view where continent_code='NA' or continent_code='SA';
+
+   drop view american_countires;
