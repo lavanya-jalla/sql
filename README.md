@@ -79,10 +79,15 @@ LAMP
 # Applications of SQL
 
 E-commerce Websites
+
 Banking Systems
+
 Healthcare Management
+
 Educational Institutions
+
 Transport & Booking Systems
+
 Mobile Applications
 
 # Author
